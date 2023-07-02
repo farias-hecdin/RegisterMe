@@ -1,0 +1,34 @@
+.Card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: .3rem;
+  padding: .6rem 1rem;
+  border: 1px solid transparent;
+  border-radius: .2rem;
+  color: #666666;
+  background: #fef9fe;
+  --color: #0074D9;
+  &:hover {
+   border-color: var(--color);
+   color: var(--color);
+   transition: .1s;
+  }
+  &__image {
+    width: 3.5rem;
+    border-radius: 50%;
+    background-color: #eeeeee;
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  &__name {
+    font-size: 1.1rem;
+    font-weight: var(--fo-medium);
+  }
+  &__phone {
+    margin-top: .2rem;
+    font-size: .9rem;
+  }
+}

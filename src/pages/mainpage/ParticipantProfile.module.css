@@ -1,0 +1,32 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  user-select: none;
+  &__image {
+    margin: 2rem 0 1rem;
+    & > img {
+      width: 9rem;
+      border-radius: 50%;
+      background-color: #eeeeee;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    & > li {
+      font-weight: var(--fo-light);
+      font-size: 1.2rem;
+  pointer-events: none;
+      & > span {
+        display: block;
+        margin-bottom: .1rem;
+        font-size: initial;
+        font-weight: var(--fo-medium);
+      }
+    }
+  }
+}
+

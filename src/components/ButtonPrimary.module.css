@@ -1,0 +1,19 @@
+.Button {
+  padding: 0.5rem 2rem;
+  border: 1px solid transparent;
+  background-color: var(--co-primary);
+  font-weight: var(--fo-medium);
+  color: #ffffff;
+  transition: .1s;
+  --co-primary: #0074D9;
+  &:hover {
+   border-color: var(--co-primary);
+   color: var(--co-primary);
+   background-color: transparent;
+  }
+}
+
+.Button[data-css="secondary"] {
+ @extend .Button;
+  --co-primary: #888888;
+}

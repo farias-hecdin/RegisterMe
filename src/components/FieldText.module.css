@@ -1,0 +1,40 @@
+.FieldText {
+  position: relative;
+  --left: .8rem;
+  --enabled: #0074D9;
+  &__label {
+    position: absolute;
+    left: var(--left);
+    top: 50%;
+    font-size: 1rem;
+    color: #888888;
+    transform: translateY(-50%);
+    transition: all 500ms;
+    user-select: none;
+    pointer-events: none;
+    transition: .2s;
+  }
+  &__input {
+    width: 100%;
+    padding: .5rem var(--left);
+    border: 1px solid transparent;
+    border-bottom-color: #999999;
+    background-color: #FEF9FE;
+    &:focus {
+      border-bottom-color: var(--enabled);
+      background-color: #F0F3FB;
+      outline: none;
+    }
+    &::placeholder {
+      display: none;
+      user-select: none;
+    }
+    &:not(:placeholder-shown) + .FieldText__label,
+    &:focus + .FieldText__label {
+      top: -25%;
+      left: .2rem;
+      font-size: .8rem;
+      color: var(--enabled);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.Header {
+  padding: 2rem 4rem 0.5rem;
+  &__wrap {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #0074d9;
+  }
+}
+
+.Logo {
+  margin: 0 0 .9rem 0;
+  font-family: var(--fo-primary);
+  font-weight: var(--fo-extralight);
+  font-style: italic;
+  font-size: 2rem;
+  color: #0074d9;
+}
