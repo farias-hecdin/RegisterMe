@@ -2,33 +2,34 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-bottom: .3rem;
-  padding: .6rem 1rem;
+  margin-bottom: 0.3rem;
+  padding: 0.6rem 1rem;
   border: 1px solid transparent;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   color: #666666;
   background: #fef9fe;
-  --color: #0074D9;
+  --color: #0074d9;
   &:hover {
-   border-color: var(--color);
-   color: var(--color);
-   transition: .1s;
+    border-color: var(--color);
+    color: var(--color);
+    transition: 0.1s;
   }
-  &__image {
+  &_image {
+    height: 3.5rem;
     width: 3.5rem;
     border-radius: 50%;
     background-color: #eeeeee;
   }
-  &__wrap {
+  &_wrap {
     display: flex;
     flex-direction: column;
   }
-  &__name {
+  &_name {
     font-size: 1.1rem;
     font-weight: var(--fo-medium);
   }
-  &__phone {
-    margin-top: .2rem;
-    font-size: .9rem;
+  &_phone {
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
   }
 }

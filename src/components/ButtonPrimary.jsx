@@ -1,11 +1,17 @@
-import css from "./ButtonPrimary.module.css"
+import css from "./ButtonPrimary.module.css";
 
-function ButtonPrimary({ text, styled, handleClick }) {
+function ButtonPrimary({handleClick, pText, pType, styled, variant}) {
   return (
-  <button className={css.Button} data-css={styled} onClick={handleClick}>
-      {text}
-  </button>
-  )
+    <button
+      className={css.Button}
+      style={styled}
+      data-variant={variant}
+      type={pType}
+      onClick={handleClick}
+    >
+      {pText}
+    </button>
+  );
 }
 
-export default ButtonPrimary
+export default ButtonPrimary;

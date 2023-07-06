@@ -1,53 +1,73 @@
-import { useState, useContext } from "react"
+import { useState, useContext } from "react";
 import css from "./MainLayout.module.css";
-import ButtonPrimary from "../../components/ButtonPrimary.jsx"
-import FieldText from "../../components/FieldText.jsx";
 import TopBar from "../../components/TopBar.jsx";
-import ParticipantProfile from './ParticipantProfile.jsx';
-import UserModal from "./UserModal.jsx"
-import { UserContext } from '../../context/user/userProvider.jsx'
+import ParticipantProfile from "./ParticipantProfile.jsx";
+import RegisterForm from "./RegisterForm.jsx";
+import UserModal from "./UserModal.jsx";
+import { UserContext } from "../../context/user/userProvider.jsx";
 
 function App() {
-  // hook - Context
-  const { dataList } = useContext(UserContext);
-  const users = dataList.LIST
-  // hook - State
-  const [showModal, setShowModal] = useState(false)
-  // func - Open modal
-  const toggleModal = () => setShowModal(!showModal)
+  const { users } = useContext(UserContext);
+
+  // Create an array state to store the participant form data -----------------
+  const [participant, setParticipant] = useState([])
+
+  function fnAddParticipant(data) {
+    setParticipant([...participant, data])
+  }
+
+  // Show or hide modal component ---------------------------------------------
+  const [activeModal, setActiveModal] = useState(false);
+
+  function fnToggleModal() {
+    setActiveModal(!activeModal);
+  }
+
+  // Show the next participant profile ----------------------------------------
+  const [showParticipant, setShowParticipant] = useState(0);
+
+  function fnShowParticipant() {
+    let state = showParticipant;
+    if (state < users.length - 1) {
+      setShowParticipant(state + 1)
+    } else {
+      setShowParticipant(0);
+      alert("Great! We just received the last participant. 👍 \nLet's get started again!")
+    }
+  }
 
   return (
     <section className={css.Frame}>
-      <aside className={css.Frame__shape}></aside>
-      <TopBar title="Register me, please"/>
+      <aside className={css.Frame_shape}></aside>
+      <TopBar
+        pTitle="Register me, please"
+      />
       <main className={css.Container}>
-        <div className={css.Container__wrap}>
-          <h2 className={css.Container__title}>Form</h2>
-          <div className={css.Form}>
-            <FieldText description="First name" keyword="firstname"/>
-            <FieldText description="Last name" keyword="lastname"/>
-            <FieldText description="Email" keyword="email"/>
-            <FieldText description="Password" keyword="password"/>
-            <div className={css.Form__footer}>
-              <ButtonPrimary text="Send"/>
-              <ButtonPrimary text="Show list" styled="secondary" handleClick={toggleModal} />
-            </div>
-          </div>
-        </div>
-        { // 1.6 Paste new Context
-        }
-        <div className={css.Container__wrap}>
-          <h2 className={css.Container__title}>Participant</h2>
-          <ParticipantProfile
-            firstName={users[1].firstName}
-            lastName={users[1].lastName}
-            phone={users[1].phone}
-            password={users[1].password}
-            image={users[1].image}
+        <div className={css.Container_wrap}>
+          <h2 className={css.Container_title}>Form</h2>
+          <RegisterForm
+            toggleModal={fnToggleModal}
+            handleSubmit={fnAddParticipant}
           />
-          <UserModal showModal={showModal} toggleModal={toggleModal} />
         </div>
-
+        <div className={css.Container_wrap}>
+          <h2 className={css.Container_title}>Participant</h2>
+          <ParticipantProfile
+            pFirstName={users[showParticipant].firstName}
+            pLastName={users[showParticipant].lastName}
+            pAge={users[showParticipant].age}
+            pEmail={users[showParticipant].email}
+            pImage={users[showParticipant].image}
+            pPassword={users[showParticipant].password}
+            pPhone={users[showParticipant].phone}
+            showParticipant={fnShowParticipant}
+          />
+        </div>
+        <UserModal
+          isActiveModal={activeModal}
+          dataParticipant={participant}
+          toggleModal={fnToggleModal}
+        />
       </main>
     </section>
   );

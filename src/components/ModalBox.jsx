@@ -1,13 +1,11 @@
-import css from './ModalBox.module.css'
+import css from "./ModalBox.module.css";
 
 function ModalBox({ children }) {
   return (
     <aside className={css.LightBox}>
-      <div className={css.LightBox__wrap}>
-        {children}
-      </div>
+      <div className={css.LightBox_wrap}>{children}</div>
     </aside>
-  )
+  );
 }
 
-export default ModalBox
+export default ModalBox;

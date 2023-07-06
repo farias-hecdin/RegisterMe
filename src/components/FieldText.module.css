@@ -1,8 +1,8 @@
 .FieldText {
   position: relative;
-  --left: .8rem;
-  --enabled: #0074D9;
-  &__label {
+  --left: 0.8rem;
+  --enabled: #0074d9;
+  &_label {
     position: absolute;
     left: var(--left);
     top: 50%;
@@ -12,28 +12,28 @@
     transition: all 500ms;
     user-select: none;
     pointer-events: none;
-    transition: .2s;
+    transition: 0.2s;
   }
-  &__input {
+  &_input {
     width: 100%;
-    padding: .5rem var(--left);
+    padding: 0.5rem var(--left);
     border: 1px solid transparent;
     border-bottom-color: #999999;
-    background-color: #FEF9FE;
+    background-color: #fef9fe;
     &:focus {
       border-bottom-color: var(--enabled);
-      background-color: #F0F3FB;
+      background-color: #f0f3fb;
       outline: none;
     }
     &::placeholder {
       display: none;
       user-select: none;
     }
-    &:not(:placeholder-shown) + .FieldText__label,
-    &:focus + .FieldText__label {
+    &:not(:placeholder-shown) + .FieldText_label,
+    &:focus + .FieldText_label {
       top: -25%;
-      left: .2rem;
-      font-size: .8rem;
+      left: 0.2rem;
+      font-size: 0.8rem;
       color: var(--enabled);
     }
   }

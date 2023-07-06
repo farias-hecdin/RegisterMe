@@ -1,34 +1,31 @@
 // Providing Data from a Root Component
-import { createContext, useReducer } from 'react';
-import data_user from "../../data/data_user_profile.jsx"
-import reducerUser, { actions } from "./userReducer.jsx"
+import { createContext } from "react";
+import db_user from "../../data/data_user_profile.jsx";
 
 // Take list of data
-const arrayUser = data_user[0].users
+const users = db_user[0].users;
 
-const INITIAL_STATE = {
-  LIST: arrayUser,
-  NEW: [],
-  SELECTED: null,
-}
+const initial_state = {
+  theList: users,
+  theAdd: [],
+  theSelected: null,
+};
 
-// Make a new Context and Provider
+// Make a Context and Provider
 const UserContext = createContext();
 
-function UserData({ children }) {
-  const [state, dispatch] = useReducer(reducerUser, INITIAL_STATE);
-
-  // Define value
-  const value = {
-    dataList: state,
-  }
+function UserDataAccess({ children }) {
+  // Define value or data pass to context
+  const contextData = {
+    users: initial_state.theList,
+  };
 
   return (
-    <UserContext.Provider value={value}>
+    <UserContext.Provider value={contextData}>
       {children}
     </UserContext.Provider>
-  )
+  );
 }
 
-export { UserContext, INITIAL_STATE }
-export default UserData; // Export to (../../main.jsx)
+export { UserContext };
+export default UserDataAccess; // Shared data to (../../main.jsx)

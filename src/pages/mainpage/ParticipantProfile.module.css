@@ -1,32 +1,47 @@
 .Container {
   display: flex;
   flex-direction: column;
-  pointer-events: none;
-  user-select: none;
-  &__image {
-    margin: 2rem 0 1rem;
+  &_image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     & > img {
+      height: 9rem;
       width: 9rem;
       border-radius: 50%;
+      border: 1px solid #0074d9;
       background-color: #eeeeee;
     }
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      border-top: 1px solid #0074d9;
+    }
   }
-  &__list {
-    display: flex;
-    flex-direction: column;
+  &_list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    margin-top: 3rem;
     list-style: none;
+    pointer-events: none;
+    user-select: none;
     & > li {
       font-weight: var(--fo-light);
       font-size: 1.2rem;
-  pointer-events: none;
+      pointer-events: none;
       & > span {
         display: block;
-        margin-bottom: .1rem;
+        margin-bottom: 0.2rem;
         font-size: initial;
         font-weight: var(--fo-medium);
       }
     }
   }
+  &_footer {
+    margin-top: 3rem;
+  }
 }
-

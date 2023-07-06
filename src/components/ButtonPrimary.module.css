@@ -4,16 +4,21 @@
   background-color: var(--co-primary);
   font-weight: var(--fo-medium);
   color: #ffffff;
-  transition: .1s;
-  --co-primary: #0074D9;
+  transition: 0.1s;
+  --co-primary: #000000;
   &:hover {
-   border-color: var(--co-primary);
-   color: var(--co-primary);
-   background-color: transparent;
+    border-color: var(--co-primary);
+    color: var(--co-primary);
+    background-color: transparent;
   }
 }
 
-.Button[data-css="secondary"] {
- @extend .Button;
+.Button[data-variant="primary"] {
+  @extend .Button;
+  --co-primary: #0074d9;
+}
+
+.Button[data-variant="secondary"] {
+  @extend .Button;
   --co-primary: #888888;
 }

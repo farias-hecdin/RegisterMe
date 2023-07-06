@@ -1,12 +1,30 @@
 .Container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  width: 30rem;
-  > ul {
-    overflow: auto;
-    max-height: 45vh;
+  gap: 1rem;
+  &_header {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #0074d9;
+  }
+  &_title {
+    margin-bottom: .9rem;
+    font-family: var(--fo-base);
+    font-weight: var(--fo-light);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #0074d9;
+  }
+  &_list {
+    display: flex;
+    gap: 2rem;
+    > ul {
+      display: flex;
+      flex-direction: column;
+      width: 30rem;
+      padding-right: .6rem;
+      height: 25rem;
+      overflow: auto;
+    }
   }
 }
-
-

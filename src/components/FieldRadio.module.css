@@ -1,0 +1,20 @@
+.Radio {
+  --enabled: #0074d9;
+  --disabled: #666666;
+  &_input {
+    display: none;
+  }
+  &_input + span {
+    padding: .1rem .5rem;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    font-weight: var(--fo-medium);
+    font-size: .9rem;
+    color: var(--disabled);
+  }
+  &_input:checked + span {
+    padding: .1rem .5rem;
+    border-color: var(--enabled);
+    color: var(--enabled);
+  }
+}

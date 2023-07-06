@@ -1,10 +1,11 @@
 .Frame {
   position: relative;
-  &__shape {
+  &_shape {
     position: absolute;
     right: 0;
     z-index: -1;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 50vw;
     background-color: #f0f3fb;
   }
@@ -14,23 +15,12 @@
   display: grid;
   gap: 8rem;
   grid-template-columns: repeat(2, 1fr);
-  padding: 0.5rem 4rem;
-  &__title {
+  padding: 0.5rem 4rem 4rem;
+  &_title {
+    margin-bottom: 3rem;
     font-family: var(--fo-base);
     font-weight: var(--fo-light);
     font-size: 1.2rem;
     color: #0074d9;
   }
 }
-
-.Form {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-top: 2rem;
-  &__footer {
-    display: flex;
-    gap: 1rem;
-  }
-}
-

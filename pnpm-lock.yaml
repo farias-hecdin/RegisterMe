@@ -8,6 +8,9 @@ dependencies:
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.24)
+  eruda:
+    specifier: ^3.0.0
+    version: 3.0.0
   modern-normalize:
     specifier: ^2.0.0
     version: 2.0.0
@@ -936,6 +939,10 @@ packages:
 
   /electron-to-chromium@1.4.433:
     resolution: {integrity: sha512-MGO1k0w1RgrfdbLVwmXcDhHHuxCn2qRgR7dYsJvWFKDttvYPx6FNzCGG0c/fBBvzK2LDh3UV7Tt9awnHnvAAUQ==}
+
+  /eruda@3.0.0:
+    resolution: {integrity: sha512-6L8A8aBHOQv0rqeBlNdJEl/hl6OAdLVRtJlVmBIlIJ6Fe1a92HFXO58jHLC0vFyuKV0deTjYjRaWwLo9lJ9K9A==}
+    dev: false
 
   /es-abstract@1.21.2:
     resolution: {integrity: sha512-y/B5POM2iBnIxCiernH1G7rC9qQoM77lLIMQLuob0zhp8C56Po81+2Nj0WFKnd0pNReDTnkYryc+zhOzpEIROg==}

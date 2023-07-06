@@ -1,41 +1,83 @@
-import { useContext } from 'react'
-import css from './UserModal.module.css'
-import UserCard from "./UserCard.jsx"
-import FieldText from "../../components/FieldText.jsx";
-import ButtonPrimary from "../../components/ButtonPrimary.jsx"
-import ModalBox from "../../components/ModalBox.jsx"
-import { UserContext } from '../../context/user/userProvider';
+import { useContext, useState } from "react";
+import css from "./UserModal.module.css";
+import ButtonPrimary from "../../components/ButtonPrimary.jsx";
+import ModalBox from "../../components/ModalBox.jsx";
+import UserCard from "./UserCard.jsx";
+import FieldRadio from "../../components/FieldRadio.jsx"
+import { UserContext } from "../../context/user/userProvider";
 
-function UserModal({ showModal, toggleModal }) {
-  const { dataList } = useContext(UserContext);
-  const users = dataList.LIST
+function UserModal({ isActiveModal, toggleModal, dataParticipant }) {
+  const { users } = useContext(UserContext);
+
+  // Participants window ------------------------------------------------------
+  const [activeTab, setActiveTab] = useState("new")
+
+  const tabNewUsers = () => {
+    setActiveTab("new");
+  };
+  const tabPrevUsers= () => {
+    setActiveTab('prev');
+  };
 
   return (
-    <>{
-      (showModal) ?
+    <>
+      {(isActiveModal) ? 
         <ModalBox>
           <div className={css.Container}>
-            <header>
-              <FieldText description="Search user"/>
+            <header className={css.Container_header}>
+              <h2 className={css.Container_title}>Registered participants</h2>
             </header>
-            <ul>
-              {users.map(el => (
-                <UserCard key={el.id}
-                  username={el.firstName}
-                  phone={el.phone}
-                  image={el.image}
-                />
-              ))}
-            </ul>
+            <div className={css.Container_radio}>
+              <FieldRadio
+                pText="New"
+                pIdname="usertab"
+                pValue={activeTab === 'new'}
+                handleChange={tabNewUsers}
+              />
+              <FieldRadio
+                pText="Prev"
+                pIdname="usertab"
+                pValue={activeTab === "prev"}
+                handleChange={tabPrevUsers}
+              />
+            </div>
+            <div className={css.Container_list}>
+              {(activeTab === "new") ?
+                <ul>
+                  {dataParticipant.map(elem => (
+                    <UserCard
+                      key={crypto.randomUUID()}
+                      pUsername={elem.firstName}
+                      pPhone={elem.phone}
+                      pImage={elem.image}
+                    />
+                  ))}
+                </ul>
+                :
+                <ul>
+                  {users.map(elem => (
+                    <UserCard
+                      key={elem.id}
+                      pUsername={elem.firstName}
+                      pPhone={elem.phone}
+                      pImage={elem.image}
+                    />
+                  ))}
+                </ul>
+              }
+            </div>
             <footer>
-              <ButtonPrimary text="Close" handleClick={ toggleModal }/>
+              <ButtonPrimary
+                pText="Close"
+                handleClick={toggleModal}
+                variant="primary"
+              />
             </footer>
           </div>
         </ModalBox>
-        :
-        null
-    }</>
-  )
+       : null}
+    </>
+  );
 }
 
-export default UserModal
+export default UserModal;

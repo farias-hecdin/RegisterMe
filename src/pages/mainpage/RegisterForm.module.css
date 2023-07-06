@@ -1,0 +1,23 @@
+.Container {
+  margin: 0;
+  &_text {
+    margin: 0.4rem 0 2rem;
+    color: #555555;
+    line-height: 1.4;
+  }
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  &_wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  &_footer {
+    display: flex;
+    gap: 1rem;
+    margin: 1.4rem 0 0;
+  }
+}
